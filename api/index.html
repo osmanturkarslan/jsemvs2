@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Requests</title>
+</head>
+
+<body>
+
+    <div style="display: flex; gap: 20px; align-items: center;">
+        <h3>Locations</h3> <input type="radio">
+        <h3>Layers</h3> <input type="radio"><br><br>
+    </div>
+
+    <input id="searchbox" type="search" placeholder="Search for location...">
+    <button onclick="doTheFetch2()">Search</button>
+
+    <br><br>
+    <div id="results">
+
+    </div>
+
+    <script>
+        console.log("API request script loaded.");
+
+        const doTheFetch = async () => {
+            const response = await fetch("https://api3.geo.admin.ch/rest/services/ech/MapServer", {
+                "method": "get"
+            })
+        };
+        doTheFetch();
+
+        const doTheFetch2 = async () => {
+            const searchText = document.getElementById('searchbox').value || 'visp';
+            const resultbox = document.getElementById("results")
+            const response = await fetch("https://api3.geo.admin.ch/rest/services/ech/SearchServer?type=locations&searchText=" + searchText, {
+                "method": "get"
+            })
+
+            const data = await response.json();
+            resultbox.innerHTML = "";
+            for (let i = 0; i < data.results.length; i++) {
+                resultbox.innerHTML += data.results[i].attrs.label + "<br>";
+            }
+        };
+        doTheFetch2();
+
+        document.getElementById("searchbox").addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                doTheFetch2();
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

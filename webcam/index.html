@@ -1,67 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <!-- Basic page configuration -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webcam Photo App</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Webcam</title>
-</head>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css" />
 
-<body>
-    <button id="startWebcam" onclick="setupWebcam()">Start Webcam</button>
-    <button id="stopWebcam" onclick="stopWebcam()">Stop Webcam</button>
-    <button id="capturePhoto" onclick="capturePhoto()">Capture Photo</button>
+    <!-- Font Awesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- ============================= -->
+    <!-- Control Buttons -->
+    <!-- ============================= -->
+
+    <div class="controls">
+      <button id="startWebcam" onclick="setupWebcam()">Start Webcam</button>
+
+      <button id="stopWebcam" onclick="stopWebcam()">Stop Webcam</button>
+
+      <button id="capturePhoto" onclick="capturePhoto()" style="display: none">
+        Capture Photo
+      </button>
+
+      <button
+        id="downloadAll"
+        onclick="downloadAllPhotos()"
+        style="display: none"
+      >
+        Download All
+      </button>
+    </div>
+
+    <!-- ============================= -->
+    <!-- Main Layout -->
+    <!-- ============================= -->
 
     <div id="container">
-        <div id="links"></div>
-        <video id="webcam"></video>
-        <div id="rechts"></div>
+      <div id="links"></div>
+
+      <!-- Webcam preview -->
+      <video id="webcam"></video>
+
+      <div id="rechts"></div>
     </div>
+
     <div id="unten"></div>
-    <script>
-        async function setupWebcam() {
-            const videoElement = document.getElementById('webcam');
-            console.log(videoElement);
 
-            videoElement.srcObject = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480 } });
-            videoElement.onloadedmetadata = () => {
-                videoElement.play();
-            };
-        }
+    <!-- ============================= -->
+    <!-- Photo Popup Viewer -->
+    <!-- ============================= -->
 
-        function stopWebcam() {
-            const videoElement = document.getElementById('webcam');
-            const stream = videoElement.srcObject;
-            const tracks = stream.getTracks();
+    <div id="photoPopup">
+      <div id="popupContent">
+        <!-- Close popup button -->
+        <button id="popupClose" onclick="closePopup()">×</button>
 
-            tracks.forEach(track => track.stop());
-            videoElement.srcObject = null;
-        }
+        <!-- Large preview image -->
+        <img id="popupImg" src="" />
+      </div>
+    </div>
 
-        function capturePhoto() {
-            const videoElement = document.getElementById('webcam');
-            const canvas = document.createElement('canvas');
-            canvas.width = 290;
-            canvas.height = 200;
-            const context = canvas.getContext('2d');
-            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-            const dataURL = canvas.toDataURL('image/png');
+    <!-- ============================= -->
+    <!-- External Libraries -->
+    <!-- ============================= -->
 
-            if (document.getElementById('links').children.length < 2) {
-                document.getElementById('links').appendChild(canvas);
-            } else if (document.getElementById('rechts').children.length < 2) {
-                document.getElementById('rechts').appendChild(canvas);
-            } else {
-                document.getElementById('unten').appendChild(canvas);
-            }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
-
-            //const imgWindow = window.open('', '_blank');
-            //imgWindow.document.write('<img src="' + dataURL + '"/>');
-        }
-        //setupWebcam();
-    </script>
-</body>
-
+    <!-- Main JavaScript -->
+    <script src="js/app.js"></script>
+  </body>
 </html>

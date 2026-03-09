@@ -1,0 +1,217 @@
+/* =====================================================
+   GLOBAL STYLES
+   ===================================================== */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+/* =====================================================
+   BUTTON STYLES
+   ===================================================== */
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+  font-size: 16px;
+
+  color: white;
+}
+
+#startWebcam {
+  background: #4caf50;
+}
+
+#stopWebcam {
+  background: #be2424;
+}
+
+#capturePhoto {
+  background: #d8db25;
+  color: black;
+}
+
+#downloadAll {
+  background: #2196f3;
+}
+
+/* =====================================================
+   VIDEO STYLE
+   ===================================================== */
+
+video {
+  width: 640px;
+  height: 480px;
+
+  border-radius: 35px;
+  border: 5px solid #4caf50;
+
+  margin: 20px auto;
+
+  display: block;
+
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 6px 20px rgba(0, 0, 0, 0.19);
+}
+
+/* =====================================================
+   PAGE LAYOUT
+   ===================================================== */
+
+#container {
+  display: flex;
+}
+
+#links,
+#rechts {
+  width: 30%;
+  padding-top: 2%;
+}
+
+#unten {
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  justify-content: center;
+}
+
+/* =====================================================
+   PHOTO THUMBNAILS
+   ===================================================== */
+
+canvas {
+  border-radius: 25px;
+  margin: 20px auto;
+}
+
+.photo-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* =====================================================
+   PHOTO ICON BUTTONS
+   ===================================================== */
+
+.photo-options {
+  position: absolute;
+
+  bottom: 20px;
+  right: 5px;
+
+  display: flex;
+  gap: 2px;
+
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.photo-options button {
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.photo-options button:hover {
+  background: #4caf50;
+  transform: scale(1.05);
+}
+
+.photo-wrapper:hover .photo-options {
+  opacity: 1;
+  transition: 1.5s;
+}
+
+/* =====================================================
+   POPUP VIEWER
+   ===================================================== */
+
+#photoPopup {
+  display: none;
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+#popupContent {
+  position: relative;
+
+  background: white;
+
+  padding: 10px;
+
+  border-radius: 15px;
+
+  max-width: 90%;
+  max-height: 90%;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+#popupContent img {
+  max-width: 100%;
+  max-height: 80vh;
+
+  border-radius: 10px;
+}
+
+/* Close button */
+
+#popupClose {
+  position: absolute;
+
+  top: -10px;
+  right: -10px;
+
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+
+  background: red;
+  color: white;
+
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}

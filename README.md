@@ -67,7 +67,7 @@ webcam-project
 ## 🚀 How to Run the Project
 
 1. Clone this repository
-
+https://github.com/osmanturkarslan/Javascript_Emvs2.git
 
 2. Open the project folder
 

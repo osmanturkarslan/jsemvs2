@@ -99,6 +99,6 @@ The purpose of this repository is to:
 
 ## 🎥 Demo
 
-![Webcam Demo](images/webcam-demo.gif)
+![Webcam Demo](webcam/images/webcam-demo.gif)
 
 ---

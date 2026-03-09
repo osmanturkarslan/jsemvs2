@@ -17,6 +17,8 @@ These exercises were designed to practice and better understand fundamental Java
 - Events
 - Basic logic and control structures
 
+The repository also includes examples using different browser APIs such as Geolocation, Battery Status, and machine learning experiments with ml5.js.
+
 Each exercise focuses on a specific topic covered during the course.
 
 ---

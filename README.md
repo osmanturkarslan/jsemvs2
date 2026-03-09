@@ -89,7 +89,7 @@ The purpose of this repository is to:
 
 ---
 
-## Screenshot of the Application
+## 📸 Application Preview
 
 <img width="1899" height="992" alt="image" src="https://github.com/user-attachments/assets/d8901c81-1cb8-4be0-a3f9-8558451fe2c4" />
 

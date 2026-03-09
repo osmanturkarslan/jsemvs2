@@ -88,3 +88,9 @@ The purpose of this repository is to:
 - Showcase my work as part of a course assignment
 
 ---
+
+## Screenshot of the Application
+
+<img width="1899" height="992" alt="image" src="https://github.com/user-attachments/assets/d8901c81-1cb8-4be0-a3f9-8558451fe2c4" />
+
+---
